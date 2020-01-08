@@ -120,8 +120,6 @@ class Manga:
         if not resp.ok:
             return None
         markup = resp.text
-        with open(path.join(path.dirname(__file__), 'manga.html'), 'w+', encoding='utf-8') as f:
-            f.write(resp.text)
 
         content_type = resp.headers['content-type']
 
