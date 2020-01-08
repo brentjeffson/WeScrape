@@ -104,6 +104,13 @@ class Manga:
         index_to_replace = self.chapters.index(old_chapter)
         self.chapters[index_to_replace] = new_chapter
 
+    @staticmethod
+    def supported():
+        locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
+        locators = json.loads(locators.read_text(encoding='utf-8'))
+        for value in locators:
+            print(value)
+
     @property
     def locator(self):
         return self._locator

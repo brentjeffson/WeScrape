@@ -12,7 +12,7 @@ class TestManga:
     def test_find_chapters_leviathanscans(self):
         markup = Path('src/test/resources/leviatan_item.html').read_text()
 
-        manga = Manga(markup, Sources.LEVIATHANSCANS)
+        manga = Manga(markup, Sources.LEVIATANSCANS)
         chapters = manga.chapters
         chapter = chapters[0]
 

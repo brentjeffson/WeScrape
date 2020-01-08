@@ -5,7 +5,7 @@ LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
 
 class Sources:
     MANGAKAKALOT = 'https://mangakakalot.com'
-    LEVIATHANSCANS = 'https://leviatanscans.com'
+    LEVIATANSCANS = 'https://leviatanscans.com'
 
 
 PATTERN = 0
