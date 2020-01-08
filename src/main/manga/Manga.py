@@ -6,7 +6,7 @@ from os import path
 import requests
 from bs4 import BeautifulSoup
 
-from src.main.manga.consts import Pattern, LOCATOR_PATH, Selector, SELECTOR, APIS, SELECTORS
+from src.main.manga.consts import Pattern, Selector, SELECTOR, APIS, SELECTORS
 
 
 class Chapter:
@@ -120,9 +120,7 @@ class Manga:
 
         content_type = resp.headers['content-type']
 
-        locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
-        locator = json.loads(locators.read_text(encoding='utf-8'))[source]
-        selectors = locator[SELECTOR]
+        selectors = SELECTORS[source]
 
         tmp_mangas = []
         if 'text/html' in content_type:
@@ -138,13 +136,9 @@ class Manga:
 
         return tmp_mangas
 
-
-
     @staticmethod
     def supported():
-        locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
-        locators = json.loads(locators.read_text(encoding='utf-8'))
-        for value in locators:
+        for value in SELECTORS:
             print(value)
 
     @property

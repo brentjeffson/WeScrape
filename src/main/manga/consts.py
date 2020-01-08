@@ -21,8 +21,6 @@ class Selector:
     SEARCHED_MANGA = 5
 
 
-LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
-
 PATTERN = 0
 SELECTOR = 1
 
