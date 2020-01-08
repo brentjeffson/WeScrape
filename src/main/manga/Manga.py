@@ -6,7 +6,7 @@ from os import path
 import requests
 from bs4 import BeautifulSoup
 
-from src.main.manga.consts import Pattern, LOCATOR_PATH, Selector, SELECTOR, APIS
+from src.main.manga.consts import Pattern, LOCATOR_PATH, Selector, SELECTOR, APIS, SELECTORS
 
 
 class Chapter:
@@ -64,12 +64,9 @@ class Manga:
 
     def __init__(self, markup, source):
         self.source = source
-        locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
 
-        if locators.exists() and len(locators.read_text()) > 0:
-            self.locator = json.loads(locators.read_text(encoding='utf-8'))[self.source]
-            selectors = self.locator[SELECTOR]
-            self.find_chapters(markup, selectors)
+        selectors = SELECTORS[source]
+        self.find_chapters(markup, selectors)
 
     def find_chapters(self, markup, selectors):
         soup = BeautifulSoup(markup, 'html.parser')
@@ -89,7 +86,7 @@ class Manga:
 
     def find_images(self, markup, chapter):
         soup = BeautifulSoup(markup, 'html.parser')
-        selectors = self.locator[SELECTOR]
+        selectors = SELECTORS[self.source]
 
         image_tags = soup.select(selectors[4])
         temp_images = []
