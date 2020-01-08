@@ -1,12 +1,8 @@
-import json
 import re
-from pathlib import Path
-from os import path
 
 import requests
 from bs4 import BeautifulSoup
-
-from src.main.manga.consts import Pattern, Selector, SELECTOR, APIS, SELECTORS
+from src.main.manga.consts import Selector, APIS, SELECTORS
 
 
 class Chapter:
