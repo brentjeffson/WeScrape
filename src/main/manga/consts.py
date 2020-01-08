@@ -1,14 +1,9 @@
 from os import path
 
-LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
 
 class Sources:
     MANGAKAKALOT = 'https://mangakakalot.com'
     LEVIATANSCANS = 'https://leviatanscans.com'
-
-
-PATTERN = 0
-SELECTOR = 1
 
 
 class Pattern:
@@ -25,6 +20,34 @@ class Selector:
     CHAPTER_IMAGE = 4
     SEARCHED_MANGA = 5
 
+
+LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
+
+PATTERN = 0
+SELECTOR = 1
+
+SELECTORS = {
+    Sources.MANGAKAKALOT: [
+        "link[rel=\"alternate\"]",
+        "li.manga-info-text > li > h1",
+        "div#noidungm",
+        "div.chapter-list > div.row > span > a",
+        "div.vung-doc img",
+        "h3.story_name > a"
+    ],
+    Sources.LEVIATANSCANS: [
+        "a.media-content",
+        "div.d-flex > div.heading > h5",
+        "div.row > div:nth-child(2)",
+        "div.list div.flex > a:first-child",
+        "div.vung-doc img",
+        ""
+    ]
+}
+
+REQUIRED_PARAMETERS = {
+    Sources.LEVIATANSCANS: {'q': '', 'a': ''}
+}
 
 APIS = {
     Sources.MANGAKAKALOT: '/search',
