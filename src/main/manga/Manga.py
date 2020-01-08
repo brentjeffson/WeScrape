@@ -114,11 +114,15 @@ class Manga:
             params = {'q': keyword}
             resp = requests.get(api, params=params, headers=headers)
         else:
+            api += '/' + keyword
             resp = requests.get(api, headers=headers)
 
         if not resp.ok:
             return None
         markup = resp.text
+        with open(path.join(path.dirname(__file__), 'manga.html'), 'w+', encoding='utf-8') as f:
+            f.write(resp.text)
+
         content_type = resp.headers['content-type']
 
         locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
@@ -131,8 +135,8 @@ class Manga:
             searched_tags = soup.select(selectors[Selector.SEARCHED_MANGA])
 
             for searched_tag in searched_tags:
-                url = searched_tag['href']
-                title = searched_tag.text
+                url = searched_tag['href'].strip()
+                title = searched_tag.text.replace('\n', '').strip()
                 tmp_mangas.append({'url': url, 'title': title})
         elif 'application/json' in content_type:
             pass
