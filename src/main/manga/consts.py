@@ -2,9 +2,14 @@ from os import path
 
 LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
 
+
 class Sources:
     MANGAKAKALOT = 'https://mangakakalot.com'
     LEVIATHANSCANS = 'https://leviatanscans.com'
+
+
+PATTERN = 0
+SELECTOR = 1
 
 
 class Pattern:
