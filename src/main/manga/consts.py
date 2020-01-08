@@ -2,7 +2,6 @@ from os import path
 
 LOCATOR_PATH = path.join(path.dirname(__file__), 'locators.json')
 
-
 class Sources:
     MANGAKAKALOT = 'https://mangakakalot.com'
     LEVIATANSCANS = 'https://leviatanscans.com'
@@ -24,4 +23,10 @@ class Selector:
     MANGA_DESCRIPTION = 2
     CHAPTER_ITEM = 3
     CHAPTER_IMAGE = 4
+    SEARCHED_MANGA = 5
 
+
+APIS = {
+    Sources.MANGAKAKALOT: '/search',
+    Sources.LEVIATANSCANS: ''
+}

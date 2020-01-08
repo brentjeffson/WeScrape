@@ -3,9 +3,10 @@ import re
 from pathlib import Path
 from os import path
 
+import requests
 from bs4 import BeautifulSoup
 
-from src.main.manga.consts import Pattern, LOCATOR_PATH, Selector, SELECTOR
+from src.main.manga.consts import Pattern, LOCATOR_PATH, Selector, SELECTOR, APIS
 
 
 class Chapter:
@@ -103,6 +104,42 @@ class Manga:
     def update(self, old_chapter, new_chapter):
         index_to_replace = self.chapters.index(old_chapter)
         self.chapters[index_to_replace] = new_chapter
+
+    @staticmethod
+    def search(keyword, source, as_payload=False, headers=None):
+        api = source + APIS[source]
+
+        resp = None
+        if as_payload:
+            params = {'q': keyword}
+            resp = requests.get(api, params=params, headers=headers)
+        else:
+            resp = requests.get(api, headers=headers)
+
+        if not resp.ok:
+            return None
+        markup = resp.text
+        content_type = resp.headers['content-type']
+
+        locators = Path(path.join(path.dirname(__file__), LOCATOR_PATH))
+        locator = json.loads(locators.read_text(encoding='utf-8'))[source]
+        selectors = locator[SELECTOR]
+
+        tmp_mangas = []
+        if 'text/html' in content_type:
+            soup = BeautifulSoup(markup, 'html.parser')
+            searched_tags = soup.select(selectors[Selector.SEARCHED_MANGA])
+
+            for searched_tag in searched_tags:
+                url = searched_tag['href']
+                title = searched_tag.text
+                tmp_mangas.append({'url': url, 'title': title})
+        elif 'application/json' in content_type:
+            pass
+
+        return tmp_mangas
+
+
 
     @staticmethod
     def supported():
