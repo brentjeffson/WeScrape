@@ -1,0 +1,30 @@
+{
+  "https://mangakakalot.com": [
+    [
+      "",
+      "",
+      ""
+    ],
+    [
+      "link[rel=\"alternate\"]",
+      "li.manga-info-text > li > h1",
+      "div#noidungm",
+      "div.chapter-list > div.row > span > a",
+      "div.vung-doc img"
+    ]
+  ],
+  "https://leviatanscans.com": [
+    [
+      "",
+      "",
+      ""
+    ],
+    [
+      "a.media-content",
+      "div.d-flex > div.heading > h5",
+      "div.row > div:nth-child(2)",
+      "div.list div.flex > a:first-child",
+      "div.vung-doc img"
+    ]
+  ]
+}
