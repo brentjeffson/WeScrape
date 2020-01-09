@@ -1,8 +1,6 @@
-from src.main.manga.Manga import Manga, Chapter
-import json
-from src.main.manga.consts import Sources
+from manga.Manga import Manga, Chapter
+from manga.consts import Sources
 from pathlib import Path
-from os import path
 
 
 class TestManga:

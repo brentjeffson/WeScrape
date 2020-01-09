@@ -1,5 +1,5 @@
-from src.main.manga.Manga import Manga
-from src.main.manga.consts import Sources
+from manga.Manga import Manga
+from manga.consts import Sources
 
 
 def test_search_mangakakalot():
