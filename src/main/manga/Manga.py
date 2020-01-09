@@ -2,7 +2,7 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-from src.main.manga.consts import Selector, APIS, SELECTORS
+from src.main.manga.consts import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS
 
 
 class Chapter:
@@ -103,8 +103,8 @@ class Manga:
         api = source + APIS[source]
 
         resp = None
-        if as_payload:
-            params = {'q': keyword}
+        if source in REQUIRED_PARAMETERS:
+            params = {REQUIRED_PARAMETERS[source][0]: keyword}
             resp = requests.get(api, params=params, headers=headers)
         else:
             api += '/' + keyword

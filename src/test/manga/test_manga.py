@@ -6,9 +6,6 @@ from os import path
 
 
 class TestManga:
-    def test_resource_exists(self):
-        pass
-
     def test_find_chapters_leviathanscans(self):
         markup = Path('src/test/resources/leviatan_item.html').read_text()
 

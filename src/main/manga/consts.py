@@ -39,15 +39,18 @@ SELECTORS = {
         "div.row > div:nth-child(2)",
         "div.list div.flex > a:first-child",
         "div.vung-doc img",
-        ""
+        "div.media.media-comic-card + div.list-content a.list-title"
     ]
 }
 
 REQUIRED_PARAMETERS = {
-    Sources.LEVIATANSCANS: {'q': '', 'a': ''}
+    Sources.LEVIATANSCANS: ['query']
 }
 
 APIS = {
     Sources.MANGAKAKALOT: '/search',
-    Sources.LEVIATANSCANS: ''
+    Sources.LEVIATANSCANS: '/comics'
 }
+
+if __name__ == '__main__':
+    print(Sources.LEVIATANSCANS in REQUIRED_PARAMETERS)
