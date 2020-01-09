@@ -51,6 +51,3 @@ APIS = {
     Sources.MANGAKAKALOT: '/search',
     Sources.LEVIATANSCANS: '/comics'
 }
-
-if __name__ == '__main__':
-    print(Sources.LEVIATANSCANS in REQUIRED_PARAMETERS)
