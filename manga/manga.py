@@ -67,7 +67,7 @@ class Manga:
     def find_chapters(self, markup, selectors):
         soup = BeautifulSoup(markup, 'html.parser')
 
-        chapter_tags = soup.select(selectors[Selector.CHAPTER_ITEM])
+        chapter_tags = soup.select(selectors[Selector.CHAPTER_URL])
         temp_chapter = []
         for chapter_tag in chapter_tags:
             url = chapter_tag['href']
@@ -121,7 +121,7 @@ class Manga:
         tmp_mangas = []
         if 'text/html' in content_type:
             soup = BeautifulSoup(markup, 'html.parser')
-            searched_tags = soup.select(selectors[Selector.SEARCHED_MANGA])
+            searched_tags = soup.select(selectors[Selector.SEARCHED_URL])
 
             for searched_tag in searched_tags:
                 url = searched_tag['href'].strip()

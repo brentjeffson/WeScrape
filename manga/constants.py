@@ -14,30 +14,38 @@ class Pattern:
 
 class Selector:
     MANGA_URL = 0
+    MANGA_IMAGE_URL = -1
     MANGA_TITLE = 1
     MANGA_DESCRIPTION = 2
-    CHAPTER_ITEM = 3
-    CHAPTER_IMAGE = 4
-    SEARCHED_MANGA = 5
+
+    CHAPTER_URL = 3
+    CHAPTER_TITLE = -1
+    CHAPTER_IMAGES = 4
+
+    SEARCHED_URL = 5
+    SEARCHED_IMAGE_URL = 6
+    SEARCHED_TITLE = 7
 
 
 SELECTORS = {
-    Sources.MANGAKAKALOT: [
-        "link[rel=\"alternate\"]",
-        "li.manga-info-text > li > h1",
-        "div#noidungm",
-        "div.chapter-list > div.row > span > a",
-        "div.vung-doc img",
-        "h3.story_name > a"
-    ],
-    Sources.LEVIATANSCANS: [
-        "a.media-content",
-        "div.d-flex > div.heading > h5",
-        "div.row > div:nth-child(2)",
-        "div.list div.flex > a:first-child",
-        "div.vung-doc img",
-        "div.media.media-comic-card + div.list-content a.list-title"
-    ]
+    Sources.MANGAKAKALOT: {
+        Selector.MANGA_URL: "link[rel=\"alternate\"]",
+        Selector.MANGA_IMAGE_URL: '',
+        Selector.MANGA_TITLE: "li.manga-info-text > li > h1",
+        Selector.MANGA_DESCRIPTION: "div#noidungm",
+        Selector.CHAPTER_URL: "div.chapter-list > div.row > span > a",
+        Selector.CHAPTER_IMAGES: "div.vung-doc img",
+        Selector.SEARCHED_URL: "h3.story_name > a",
+    },
+    Sources.LEVIATANSCANS: {
+        Selector.MANGA_URL: "a.media-content",
+        Selector.MANGA_IMAGE_URL: '',
+        Selector.MANGA_TITLE: "div.d-flex > div.heading > h5",
+        Selector.MANGA_DESCRIPTION: "div.row > div:nth-child(2)",
+        Selector.CHAPTER_URL: "div.list div.flex > a:first-child",
+        Selector.CHAPTER_IMAGES: "div.vung-doc img",
+        Selector.SEARCHED_URL: "div.media.media-comic-card + div.list-content a.list-title",
+    },
 }
 
 REQUIRED_PARAMETERS = {
