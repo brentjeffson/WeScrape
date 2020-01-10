@@ -1,9 +1,9 @@
-from manga.manga import Manga
+from manga.manga import MangaScraper
 from manga.constants import Sources
 
 
 def test_search_mangakakalot():
-    mangas = Manga.search('Sorcerer', Sources.MANGAKAKALOT)
+    mangas = MangaScraper.search('Sorcerer', Sources.MANGAKAKALOT)
     print(len(mangas))
     print(mangas[0])
 
@@ -12,7 +12,7 @@ def test_search_mangakakalot():
 
 
 def test_search_leviatanscans():
-    mangas = Manga.search('survival', Sources.LEVIATANSCANS)
+    mangas = MangaScraper.search('survival', Sources.LEVIATANSCANS)
     print(len(mangas))
     print(mangas[0])
 

@@ -53,7 +53,7 @@ class Chapter:
         return '({0}): {1} - {2}'.format(self.uid, self.title, self.url)
 
 
-class Manga:
+class MangaScraper:
     _chapters = []
     _source = ''
     _locator = {}

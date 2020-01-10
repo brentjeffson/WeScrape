@@ -1,6 +1,6 @@
 from os import path
 
-from manga.manga import Manga, Chapter
+from manga.manga import MangaScraper, Chapter
 from manga.constants import Sources
 from pathlib import Path
 
@@ -9,7 +9,7 @@ class TestManga:
     def test_find_chapters_leviathanscans(self):
         markup = Path(path.join(path.dirname(__file__), "../resources/leviatan_item.html")).read_text(encoding="utf-8")
 
-        manga = Manga(markup, Sources.LEVIATANSCANS)
+        manga = MangaScraper(markup, Sources.LEVIATANSCANS)
         chapters = manga.chapters
         chapter = chapters[0]
 
@@ -21,7 +21,7 @@ class TestManga:
     def test_find_chapters_mangakakalot(self):
         markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
-        manga = Manga(markup, Sources.MANGAKAKALOT)
+        manga = MangaScraper(markup, Sources.MANGAKAKALOT)
         chapters = manga.chapters
         chapter = chapters[0]
 
@@ -33,7 +33,7 @@ class TestManga:
     def test_replace_chapter(self):
         markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
-        manga = Manga(markup, Sources.MANGAKAKALOT)
+        manga = MangaScraper(markup, Sources.MANGAKAKALOT)
         manga.update(manga.chapters[0], Chapter('New', 'New', 'New'))
         chapter = manga.chapters[0]
 
@@ -45,7 +45,7 @@ class TestManga:
         item_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
         item_content_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item_content.html')).read_text(encoding='utf-8')
 
-        manga = Manga(item_markup, Sources.MANGAKAKALOT)
+        manga = MangaScraper(item_markup, Sources.MANGAKAKALOT)
         updated_chapter = manga.find_images(item_content_markup, manga.chapters[0])
 
         assert len(updated_chapter.images) == 8
