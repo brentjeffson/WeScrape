@@ -21,9 +21,6 @@ class Selector:
     SEARCHED_MANGA = 5
 
 
-PATTERN = 0
-SELECTOR = 1
-
 SELECTORS = {
     Sources.MANGAKAKALOT: [
         "link[rel=\"alternate\"]",
