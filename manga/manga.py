@@ -2,7 +2,7 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-from manga.consts import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS
+from manga.constants import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS
 
 
 class Chapter:
