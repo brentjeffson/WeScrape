@@ -6,40 +6,27 @@ from manga.constants import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS
 
 
 class Chapter:
-    _uid = ''
-    _url = ''
-    _title = ''
-    _images = ''
 
     def __init__(self, uid, url, title, images=None):
-        self.uid = uid
-        self.url = url
-        self.title = title
-        self.images = images
+        self._uid = uid
+        self._url = url
+        self._title = title
+        self._images = images
+
+    def __str__(self):
+        return '({0}): {1} - {2}'.format(self.uid, self.title, self.url)
 
     @property
     def uid(self):
         return self._uid
 
-    @uid.setter
-    def uid(self, uid):
-        self._uid = uid
-
     @property
     def url(self):
         return self._url
 
-    @url.setter
-    def url(self, url):
-        self._url = url
-
     @property
     def title(self):
         return self._title
-
-    @title.setter
-    def title(self, title):
-        self._title = title
 
     @property
     def images(self):
@@ -49,9 +36,41 @@ class Chapter:
     def images(self, images):
         self._images = images
 
-    def __str__(self):
-        return '({0}): {1} - {2}'.format(self.uid, self.title, self.url)
+    @property
+    def size(self):
+        return len(self.images)
 
+
+class Manga:
+
+    def __init__(self, url, image_url, title, chapters=None):
+        self._url = url
+        self._image_url = image_url
+        self._title = title
+        self._chapters = [] if chapters is None else chapters
+
+    def __str__(self):
+        return f"{self.title}({self.size})"
+
+    @property
+    def url(self):
+        return self._url
+
+    @property
+    def image_url(self):
+        return self._image_url
+
+    @property
+    def title(self):
+        return self._title
+
+    @property
+    def chapters(self):
+        return self._chapters
+
+    @property
+    def size(self):
+        return len(self.chapters)
 
 class MangaScraper:
     _chapters = []
