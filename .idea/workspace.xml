@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="289885ac-09e5-4ea5-81b8-9c9891b457ec" name="Default Changelist" comment="fix error search function of manga">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/manga/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/manga.py" beforeDir="false" afterPath="$PROJECT_DIR$/manga/manga.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,27 +14,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manga/Manga.py">
+        <entry file="file://$PROJECT_DIR$/manga/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="299">
+              <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/test/manga/test_manga.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="198">
+              <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -78,6 +71,7 @@
         <option value="$PROJECT_DIR$/manga/Manga.py" />
         <option value="$PROJECT_DIR$/manga/consts.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/manga/constants.py" />
       </list>
     </option>
   </component>
@@ -100,6 +94,22 @@
               <item name="WeScrape" type="b2602c69:ProjectViewProjectNode" />
               <item name="WeScrape" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WeScrape" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeScrape" type="462c0819:PsiDirectoryNode" />
+              <item name="manga" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeScrape" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeScrape" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeScrape" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeScrape" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="manga" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -116,15 +126,15 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Studio\Python\Projects\WeScrape\" />
-      <recent name="C:\Studio\Python\Projects\WeScrape\src\test\resources" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Studio\Python\Projects\WeScrape\src\test\resources" />
       <recent name="C:\Studio\Python\Projects\WeScrape\src\test\manga" />
       <recent name="C:\Studio\Python\Projects\WeScrape\src\main\manga" />
       <recent name="C:\Studio\Python\Projects\WeScrape\src\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Studio\Python\Projects\WeScrape\" />
+      <recent name="C:\Studio\Python\Projects\WeScrape\src\test\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -279,6 +289,7 @@
       <workItem from="1578556939601" duration="305000" />
       <workItem from="1578570363969" duration="948000" />
       <workItem from="1578572751118" duration="1833000" />
+      <workItem from="1578625392550" duration="1016000" />
     </task>
     <task id="LOCAL-00001" summary="fix error search function of manga">
       <created>1578467590949</created>
@@ -291,7 +302,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52652000" />
+    <option name="totallyTimeSpent" value="53668000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -306,7 +317,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49756098" visible="true" weight="0.18381241" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49756098" visible="true" weight="0.18683812" />
       <window_info id="Structure" order="1" sideWeight="0.502439" side_tool="true" weight="0.1732224" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -320,8 +331,8 @@
       <window_info anchor="bottom" id="Debug" order="8" weight="0.5662848" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.43862522" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="TODO" order="11" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.43862522" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -340,7 +351,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/manga/Manga.py</url>
+          <url>file://$PROJECT_DIR$/manga/manga.py</url>
           <line>112</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
@@ -420,13 +431,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/manga/manga.html" />
     <entry file="file://$PROJECT_DIR$/src/main/manga/manga.html" />
     <entry file="file://$PROJECT_DIR$/src/main/manga/locators.json" />
-    <entry file="file://$PROJECT_DIR$/test/manga/test_manga.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -465,16 +469,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manga/consts.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manga/Manga.py">
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manga/manga.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
+        <state relative-caret-position="519">
           <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -482,13 +489,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/manga/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="299">
+          <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/manga/test_manga.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
         </state>
       </provider>
     </entry>

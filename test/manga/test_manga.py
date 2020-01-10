@@ -1,3 +1,5 @@
+from os import path
+
 from manga.manga import Manga, Chapter
 from manga.constants import Sources
 from pathlib import Path
@@ -5,7 +7,7 @@ from pathlib import Path
 
 class TestManga:
     def test_find_chapters_leviathanscans(self):
-        markup = Path('src/test/resources/leviatan_item.html').read_text()
+        markup = Path(path.join(path.dirname(__file__), "../resources/leviatan_item.html")).read_text(encoding="utf-8")
 
         manga = Manga(markup, Sources.LEVIATANSCANS)
         chapters = manga.chapters
@@ -17,7 +19,7 @@ class TestManga:
         assert chapter.title == 'Chapter 4'
 
     def test_find_chapters_mangakakalot(self):
-        markup = Path('src/test/resources/manga_item.html').read_text(encoding='utf-8')
+        markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
         manga = Manga(markup, Sources.MANGAKAKALOT)
         chapters = manga.chapters
@@ -29,7 +31,7 @@ class TestManga:
         assert chapter.title == 'Chapter 71'
 
     def test_replace_chapter(self):
-        markup = Path('src/test/resources/manga_item.html').read_text(encoding='utf-8')
+        markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
         manga = Manga(markup, Sources.MANGAKAKALOT)
         manga.update(manga.chapters[0], Chapter('New', 'New', 'New'))
@@ -40,8 +42,8 @@ class TestManga:
         assert chapter.title == 'New'
 
     def test_find_chapter_images(self):
-        item_markup = Path('src/test/resources/manga_item.html').read_text(encoding='utf-8')
-        item_content_markup = Path('src/test/resources/manga_item_content.html').read_text(encoding='utf-8')
+        item_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
+        item_content_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item_content.html')).read_text(encoding='utf-8')
 
         manga = Manga(item_markup, Sources.MANGAKAKALOT)
         updated_chapter = manga.find_images(item_content_markup, manga.chapters[0])
