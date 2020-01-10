@@ -2,7 +2,7 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-from manga.constants import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS
+from manga.constants import Selector, APIS, SELECTORS, REQUIRED_PARAMETERS, PATTERNS, Pattern
 
 
 class Chapter:
@@ -68,42 +68,68 @@ class Manga:
     def chapters(self):
         return self._chapters
 
+    @chapters.setter
+    def chapters(self, chapters):
+        self._chapters = chapters
+
     @property
     def size(self):
         return len(self.chapters)
 
+
 class MangaScraper:
-    _chapters = []
-    _source = ''
-    _locator = {}
 
     def __init__(self, markup, source):
-        self.source = source
+        self._manga = None
+        self._source = source
+        selectors = SELECTORS[source] if source in SELECTORS else {}
+        patterns = PATTERNS[source] if source in PATTERNS else {}
 
-        selectors = SELECTORS[source]
+        self._manga = self.find_details(markup, source, SELECTORS, PATTERNS)
         self.find_chapters(markup, selectors)
+
+    def find_details(self, markup, source, selectors, patterns):
+        selectors = selectors[source] if source in SELECTORS else {}
+        patterns = patterns[source] if source in PATTERNS else {}
+        soup = BeautifulSoup(markup, "html.parser")
+
+        url = soup.select(selectors[Selector.MANGA_URL])[0]["href"]
+        title = soup.select(selectors[Selector.MANGA_TITLE])[0].text.replace("\n", "")
+        image_url_tag = soup.select(selectors[Selector.MANGA_IMAGE_URL])[0]
+        image_url = ""
+        if image_url_tag.name == 'a':
+            r = re.search(patterns[Pattern.MANGA_IMAGE_URL], str(image_url_tag))
+            image_url = r.groups()[0]
+            if source not in image_url:
+                if not image_url[0] == '/':
+                    image_url = '/' + image_url
+                image_url = source + image_url
+
+        elif image_url_tag == 'img':
+            image_url = image_url_tag['src']
+
+        return Manga(url, image_url, title)
 
     def find_chapters(self, markup, selectors):
         soup = BeautifulSoup(markup, 'html.parser')
 
         chapter_tags = soup.select(selectors[Selector.CHAPTER_URL])
-        temp_chapter = []
+        temp_chapters = []
         for chapter_tag in chapter_tags:
             url = chapter_tag['href']
             title = chapter_tag.text.replace('\n', '')
             uid = re.split(r'[\s-]', title)[1]
 
-            print(Chapter(uid, url, title))
-            temp_chapter.append(Chapter(uid, url, title))
+            temp_chapters.append(Chapter(uid, url, title))
 
-        self.chapters = temp_chapter
-        return self._chapters
+        self._manga.chapters = temp_chapters
+        return temp_chapters
 
     def find_images(self, markup, chapter):
         soup = BeautifulSoup(markup, 'html.parser')
         selectors = SELECTORS[self.source]
 
-        image_tags = soup.select(selectors[4])
+        image_tags = soup.select(selectors[Selector.CHAPTER_IMAGES])
         temp_images = []
         for image_tag in image_tags:
             href = image_tag['src']
@@ -114,8 +140,8 @@ class MangaScraper:
         return chapter
 
     def update(self, old_chapter, new_chapter):
-        index_to_replace = self.chapters.index(old_chapter)
-        self.chapters[index_to_replace] = new_chapter
+        index_to_replace = self._manga.chapters.index(old_chapter)
+        self._manga.chapters[index_to_replace] = new_chapter
 
     @staticmethod
     def search(keyword, source, as_payload=False, headers=None):
@@ -160,29 +186,18 @@ class MangaScraper:
     def locator(self):
         return self._locator
 
-    @locator.setter
-    def locator(self, locator):
-        self._locator = locator
-
     @property
     def source(self):
         return self._source
 
-    @source.setter
-    def source(self, source):
-        self._source = source
-
     @property
     def size(self):
-        return len(self.chapters)
+        return len(self.manga.size)
 
     @property
-    def chapters(self):
-        return self._chapters
+    def manga(self):
+        return self._manga
 
-    @chapters.setter
-    def chapters(self, chapters):
-        self._chapters = chapters
 # class Manga:
 #     _chapters = []
 #

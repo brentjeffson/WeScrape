@@ -9,7 +9,11 @@ class TestManga:
     def test_find_chapters_leviathanscans(self):
         markup = Path(path.join(path.dirname(__file__), "../resources/leviatan_item.html")).read_text(encoding="utf-8")
 
-        manga = MangaScraper(markup, Sources.LEVIATANSCANS)
+        scraper = MangaScraper(markup, Sources.LEVIATANSCANS)
+
+        manga = scraper.manga
+        print(manga)
+
         chapters = manga.chapters
         chapter = chapters[0]
 
@@ -21,7 +25,9 @@ class TestManga:
     def test_find_chapters_mangakakalot(self):
         markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
-        manga = MangaScraper(markup, Sources.MANGAKAKALOT)
+        scraper = MangaScraper(markup, Sources.MANGAKAKALOT)
+        manga = scraper.manga
+
         chapters = manga.chapters
         chapter = chapters[0]
 
@@ -33,8 +39,12 @@ class TestManga:
     def test_replace_chapter(self):
         markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
 
-        manga = MangaScraper(markup, Sources.MANGAKAKALOT)
-        manga.update(manga.chapters[0], Chapter('New', 'New', 'New'))
+        scraper = MangaScraper(markup, Sources.MANGAKAKALOT)
+
+        manga = scraper.manga
+        print(manga)
+
+        scraper.update(manga.chapters[0], Chapter('New', 'New', 'New'))
         chapter = manga.chapters[0]
 
         assert chapter.uid == 'New'
@@ -45,15 +55,17 @@ class TestManga:
         item_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item.html')).read_text(encoding='utf-8')
         item_content_markup = Path(path.join(path.dirname(__file__), '../resources/manga_item_content.html')).read_text(encoding='utf-8')
 
-        manga = MangaScraper(item_markup, Sources.MANGAKAKALOT)
-        updated_chapter = manga.find_images(item_content_markup, manga.chapters[0])
+        scraper = MangaScraper(item_markup, Sources.MANGAKAKALOT)
+        manga = scraper.manga
+        updated_chapter = scraper.find_images(item_content_markup, manga.chapters[0])
 
         assert len(updated_chapter.images) == 8
         assert updated_chapter.images[0] == 'https://s8.mkklcdnv8.com/mangakakalot/r2/rx919523/chapter_71/1.jpg'
 
 
 
-
+if __name__ == '__main__':
+    TestManga().test_find_chapter_images()
 
 
 
